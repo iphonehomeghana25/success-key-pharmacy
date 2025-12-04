@@ -1,0 +1,172 @@
+/* --- Variables inherited from main CSS, re-declared for clarity --- */
+:root {
+  --neon-green: #1fc70f;
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+}
+
+.about-section {
+  padding: 6rem 1rem;
+  background-color: white;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Desktop Split Layout */
+@media (min-width: 992px) {
+  .about-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Left Side: Image Stack --- */
+.about-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.main-about-img {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  border-top-right-radius: 5rem; /* Stylish curve */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating Hours Card */
+.hours-card {
+  position: absolute;
+  bottom: 2rem;
+  right: 0;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 250px;
+  border-left: 4px solid var(--neon-green);
+}
+
+.hours-icon {
+  background-color: #ecfdf5; /* Light green bg */
+  color: var(--neon-green);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hours-card h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate-900);
+}
+
+.hours-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--slate-600);
+  font-weight: 600;
+}
+
+/* --- Right Side: Content --- */
+.about-content {
+  text-align: left;
+}
+
+.about-badge {
+  color: var(--neon-green);
+  background-color: #f0fdf4;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  color: var(--slate-900);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-weight: 900;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  color: var(--slate-600);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Features List */
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .about-features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.feature-icon {
+  color: var(--neon-green);
+  min-width: 24px;
+  margin-top: 0.25rem;
+}
+
+.feature-item h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: var(--slate-900);
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate-600);
+}
+
+/* Button */
+.btn-learn-more {
+  background-color: var(--slate-900);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-learn-more:hover {
+  background-color: #1e293b; /* lighter slate */
+}

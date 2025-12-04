@@ -1,0 +1,111 @@
+/* --- Variables --- */
+:root {
+  --neon-green: #1fc70f;
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+}
+
+.testimonials-section {
+  padding: 5rem 1rem;
+  background-color: #f8fafc; /* Light gray to contrast with white sections */
+  font-family: sans-serif;
+}
+
+.testimonials-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.header-badge {
+  color: var(--neon-green);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-header h2 {
+  font-size: 2.5rem;
+  color: var(--slate-900);
+  margin: 0;
+  font-weight: 900;
+}
+
+/* --- Reviews Grid --- */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Review Card --- */
+.review-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--neon-green);
+}
+
+.quote-icon {
+  color: var(--neon-green);
+  opacity: 0.2;
+  margin-bottom: 1rem;
+}
+
+.review-text {
+  font-size: 1.05rem;
+  color: var(--slate-600);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 2rem;
+  min-height: 80px; /* Aligns cards if text length varies */
+}
+
+/* --- Review Footer (Name & Stars) --- */
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+.reviewer-info h4 {
+  margin: 0;
+  color: var(--slate-900);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.reviewer-info span {
+  font-size: 0.85rem;
+  color: #64748b; /* Slate-500 */
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: #eab308; /* Yellow/Gold */
+}

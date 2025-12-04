@@ -1,0 +1,175 @@
+/* --- Base Variables --- */
+:root {
+  --neon-green: #1fc70f;
+  --dark-green: #0f6308;
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+  --bg-light: #f8fafc;
+}
+
+.services-section {
+  padding: 5rem 1rem;
+  background-color: var(--bg-light);
+  font-family: sans-serif;
+}
+
+.services-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+.services-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-subtitle {
+  color: var(--neon-green);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--slate-900);
+  margin: 0;
+  font-weight: 900;
+}
+
+/* --- Services Grid --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.green-bg { background-color: var(--neon-green); }
+.blue-bg { background-color: #3b82f6; }
+.orange-bg { background-color: #f97316; }
+
+.service-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--slate-900);
+}
+
+.service-card p {
+  color: var(--slate-600);
+  line-height: 1.6;
+}
+
+/* --- How It Works Banner --- */
+.how-it-works-banner {
+  background-color: var(--slate-900);
+  border-radius: 2rem;
+  padding: 3rem 2rem;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-content h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.banner-content p {
+  color: #cbd5e1;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Steps Layout */
+.steps-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .steps-wrapper {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.step-icon {
+  background-color: rgba(255,255,255,0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--neon-green);
+  color: var(--neon-green);
+}
+
+.step-item span {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Connecting Line (Desktop Only) */
+.step-line {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .step-line {
+    display: block;
+    height: 2px;
+    width: 80px;
+    background-color: rgba(255,255,255,0.2);
+    margin-top: -30px; /* Align with center of icons */
+  }
+}

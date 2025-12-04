@@ -1,0 +1,166 @@
+/* --- Variables --- */
+:root {
+  --neon-green: #1fc70f;
+  --clinical-teal: #0d9488; /* A professional medical teal */
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+}
+
+.screening-section {
+  padding: 6rem 1rem;
+  background-color: #f0fdfa; /* Very light teal background */
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.screening-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .screening-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* --- Left: Content --- */
+.screening-content {
+  text-align: left;
+}
+
+.screening-badge {
+  color: var(--clinical-teal);
+  background-color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.screening-content h2 {
+  font-size: 2.5rem;
+  color: var(--slate-900);
+  margin: 0 0 1.5rem 0;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.screening-desc {
+  font-size: 1.1rem;
+  color: var(--slate-600);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+/* List of Tests */
+.screening-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.screen-item {
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.screen-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.screen-icon {
+  color: var(--clinical-teal);
+  min-width: 24px;
+  margin-top: 0.25rem;
+}
+
+.screen-text h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--slate-900);
+}
+
+.screen-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--slate-600);
+}
+
+/* CTA Button */
+.btn-book-test {
+  background-color: var(--clinical-teal);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: background-color 0.2s;
+  box-shadow: 0 4px 10px rgba(13, 148, 136, 0.3);
+}
+
+.btn-book-test:hover {
+  background-color: #0f766e; /* Darker teal */
+}
+
+/* --- Right: Image --- */
+.screening-image-card {
+  position: relative;
+  height: 500px;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 8px solid white;
+}
+
+.screening-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating Stat Box */
+.floating-stat {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--clinical-teal);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--slate-600);
+  font-weight: 600;
+}

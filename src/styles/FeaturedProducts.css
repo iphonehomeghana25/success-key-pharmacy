@@ -1,0 +1,173 @@
+/* --- Base Variables --- */
+:root {
+  --neon-green: #1fc70f;
+  --dark-green: #0f6308; /* Darker version for hover states */
+  --slate-900: #0f172a;
+  --slate-600: #475569;
+  --gray-100: #f3f4f6;
+}
+
+.products-section {
+  padding: 5rem 1rem;
+  background-color: #fff;
+  font-family: sans-serif;
+}
+
+.products-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* --- Header Styling --- */
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+}
+
+.sub-title {
+  color: var(--neon-green);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  color: var(--slate-900);
+  margin: 0 0 1rem 0;
+  font-weight: 900;
+}
+
+.section-desc {
+  color: var(--slate-600);
+  line-height: 1.6;
+}
+
+/* --- Grid Layout --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Product Card --- */
+.product-card {
+  border: 1px solid var(--gray-100);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: white;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: #e5e7eb;
+}
+
+/* Image Area */
+.image-wrapper {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--gray-100);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .image-wrapper img {
+  transform: scale(1.1);
+}
+
+/* Card Content */
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  margin: 0;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: var(--slate-600);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  min-height: 2.5rem; /* Ensure consistent height */
+}
+
+/* --- The WhatsApp Button (Using your Color) --- */
+.btn-order {
+  width: 100%;
+  background-color: white;
+  color: var(--slate-900);
+  border: 2px solid var(--neon-green); /* #1fc70f */
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-order:hover {
+  background-color: var(--neon-green);
+  color: white;
+}
+
+/* --- Bottom View All --- */
+.view-all-container {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.btn-view-all {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--slate-900);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--neon-green);
+  padding-bottom: 2px;
+  transition: gap 0.2s;
+}
+
+.btn-view-all:hover {
+  gap: 0.8rem;
+  color: var(--dark-green);
+}

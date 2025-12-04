@@ -1,0 +1,159 @@
+/* --- Navbar Container --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 1000;
+  width: 100%;
+  height: 80px; /* Fixed height for consistency */
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Logo --- */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-icon {
+  background-color: #1fc70f; /* emerald-600 */
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);
+}
+
+.logo-text h1 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.logo-text p {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #1fc70f;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+/* --- Desktop Navigation (Links) --- */
+.nav-menu.desktop-only {
+  display: none; /* Hidden by default on mobile */
+}
+
+@media (min-width: 768px) {
+  .nav-menu.desktop-only {
+    display: flex;
+    gap: 2.5rem; /* Space between links */
+    align-items: center;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: #1fc70f;
+  }
+}
+
+/* --- Desktop Action Button --- */
+.nav-action.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-action.desktop-only {
+    display: block;
+  }
+}
+
+.btn-upload {
+  background-color: #1fc70f; /* emerald-500 */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px; /* Full rounded pill shape */
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+}
+
+.btn-upload:hover {
+  background-color: #1fc70f;
+  transform: translateY(-1px);
+}
+
+/* --- Mobile Toggle --- */
+.mobile-toggle {
+  display: block;
+  cursor: pointer;
+  color: #374151;
+}
+
+@media (min-width: 768px) {
+  .mobile-toggle {
+    display: none; /* Hide hamburger on desktop */
+  }
+}
+
+/* --- Mobile Menu Dropdown --- */
+.mobile-menu {
+  position: absolute;
+  top: 80px; /* Match navbar height */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-link {
+  text-decoration: none;
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.mobile-btn {
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
