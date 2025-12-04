@@ -1,8 +1,11 @@
 import React from 'react';
 import '../styles/FeaturedProducts.css';
-import { MessageCircle, ShoppingBag, ArrowRight } from 'lucide-react';
+import { MessageCircle, ShoppingBag, ArrowRight, ShoppingCart } from 'lucide-react';
 
-// Mock Data (This will eventually come from Supabase)
+// Import local image for Mini Mart section
+import miniMartImg from '../assets/mart.jpg';
+
+// Mock Data
 const products = [
   {
     id: 1,
@@ -20,7 +23,7 @@ const products = [
     id: 3,
     name: "Vitamins & Supplements",
     description: "Immune boosters, Vitamin C, Zinc, and Multivitamins.",
-    image: "https://images.unsplash.com/photo-1550572017-edd951aa8f72?auto=format&fit=crop&q=80&w=400",
+    image: "https://cloudfront-us-east-1.images.arcpublishing.com/gray/RZSXDB4LLZO7TF3DOIZL3UPIQM.jpg",
   },
   {
     id: 4,
@@ -34,22 +37,48 @@ const FeaturedProducts = () => {
   
   const handleOrder = (productName) => {
     const message = `Hello Success Key, I would like to inquire about: ${productName}`;
-    const url = `https://wa.me/233240000000?text=${encodeURIComponent(message)}`; // Replace with real number
+    const url = `https://wa.me/233240000000?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 
   return (
-    <section className="products-section" id="services">
+    <section className="products-section" id="products">
       <div className="products-container">
         
         {/* Section Header */}
         <div className="section-header">
           <span className="sub-title">Daily Essentials</span>
-          <h2 className="main-title">What We Have in Stock</h2>
+          <h2 className="main-title">Pharmacy & Mini Mart</h2>
           <p className="section-desc">
-            We are more than just a pharmacy. Pick up your daily needs and have them delivered via WhatsApp.
+            We are more than just a pharmacy. Pick up your daily needs and have them delivered.
           </p>
         </div>
+
+        {/* --- NEW: Mini Mart Intro Section --- */}
+        <div className="mini-mart-feature">
+          <div className="mini-mart-content">
+            <div className="mart-icon-badge">
+              <ShoppingCart size={20} />
+            </div>
+            <h3>Grab Your Groceries Too!</h3>
+            <p>
+              Why stop twice? We stock a wide range of food commodities and beverages. 
+              From <strong>Don Simon</strong> juices to breakfast provisions and snacks, 
+              get everything you need in one trip.
+            </p>
+            <div className="tag-container">
+              <span className="mart-tag">Juices & Drinks</span>
+              <span className="mart-tag">Provisions</span>
+              <span className="mart-tag">Toiletries</span>
+              <span className="mart-tag">Snacks</span>
+            </div>
+          </div>
+          
+          <div className="mini-mart-image">
+            <img src={miniMartImg} alt="Success Key Mini Mart Interior" />
+          </div>
+        </div>
+        {/* ------------------------------------ */}
 
         {/* Products Grid */}
         <div className="products-grid">
