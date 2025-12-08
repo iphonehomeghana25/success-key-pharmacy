@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 
 // Import Components
@@ -25,7 +25,12 @@ import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import BlogPage from './pages/BlogPage';
 import StaffPortalPage from './pages/StaffPortalPage';
-import AdminDashboardPage from './pages/AdminDashboardPage'; // Import Dashboard
+
+// Import Admin System
+import AdminLayout from './layouts/AdminLayout';
+import DashboardOverview from './pages/admin/DashboardOverview';
+import ProductManagement from './pages/admin/ProductManagement';
+import BlogManagement from './pages/admin/BlogManagement';
 
 // Home Page Component
 const Home = () => {
@@ -50,29 +55,30 @@ function App() {
       
       <div className="app-container">
         <Routes>
-          {/* Home Route */}
-          <Route path="/" element={
-            <>
-              <Navbar />
-              <Home />
-              <Footer />
-            </>
-          } />
-          
-          {/* Main Pages */}
+          {/* --- PUBLIC ROUTES --- */}
+          <Route path="/" element={<><Navbar /><Home /><Footer /></>} />
           <Route path="/about" element={<AboutUsPage />} />
           <Route path="/catalogue" element={<CataloguePage />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          
-          {/* Staff Portal & Dashboard */}
-          <Route path="/staff-portal" element={<StaffPortalPage />} />
-          <Route path="/admin-dashboard" element={<AdminDashboardPage />} /> {/* Protected Route */}
-
-          {/* Legal Pages */}
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          
+          {/* Staff Login */}
+          <Route path="/staff-portal" element={<StaffPortalPage />} />
+
+          {/* --- ADMIN ROUTES (Protected by Layout) --- */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<DashboardOverview />} />
+            <Route path="products" element={<ProductManagement />} />
+            <Route path="blog" element={<BlogManagement />} />
+            {/* Placeholder routes for now */}
+            <Route path="orders" element={<div>Orders Page Coming Soon</div>} />
+            <Route path="sales" element={<div>Sales Page Coming Soon</div>} />
+            <Route path="reviews" element={<div>Reviews Page Coming Soon</div>} />
+          </Route>
 
           {/* 404 Route */}
           <Route path="*" element={<NotFoundPage />} />

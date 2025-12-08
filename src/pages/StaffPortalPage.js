@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '../supabaseClient'; // Import the client we made
+import { supabase } from '../supabaseClient';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/StaffPortalPage.css';
@@ -26,9 +26,9 @@ const StaffPortalPage = () => {
 
       if (error) throw error;
 
-      // If successful, navigate to the Dashboard
       if (data.user) {
-        navigate('/admin-dashboard');
+        // --- UPDATED: Redirect to the new Layout route ---
+        navigate('/admin/dashboard'); 
       }
     } catch (error) {
       setErrorMsg('Invalid login credentials. Please try again.');
@@ -53,8 +53,11 @@ const StaffPortalPage = () => {
           </div>
 
           {errorMsg && (
-            <div className="error-banner">
-              <AlertCircle size={18} /> {errorMsg}
+            <div className="error-banner" style={{ padding: '1rem', background: '#fee2e2', color: '#dc2626', textAlign: 'center', borderBottom: '1px solid #fca5a5' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontWeight: 'bold' }}>
+                <AlertCircle size={18} /> Login Failed
+              </div>
+              <span style={{ fontSize: '0.9rem' }}>{errorMsg}</span>
             </div>
           )}
 
