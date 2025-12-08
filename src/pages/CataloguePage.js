@@ -1,34 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient'; // Import Supabase
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/CataloguePage.css';
-import { Search, Filter, MessageCircle, Camera, ShoppingCart } from 'lucide-react';
-
-// --- MOCK DATA (This will come from Supabase later) ---
-const allProducts = [
-  // Pharmacy Items
-  { id: 1, category: 'Pharmacy', name: 'Malaria Relief (Coartem)', price: 'GHS 45.00', image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400' },
-  { id: 2, category: 'Pharmacy', name: 'Paracetamol Syrup', price: 'GHS 15.00', image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=400' },
-  { id: 3, category: 'Pharmacy', name: 'Vitamin C (1000mg)', price: 'GHS 60.00', image: 'https://images.unsplash.com/photo-1550572017-edd951aa8f72?auto=format&fit=crop&q=80&w=400' },
-  { id: 4, category: 'Pharmacy', name: 'Cough Syrup', price: 'GHS 35.00', image: 'https://images.unsplash.com/photo-1624454002302-36b824d7bd0a?auto=format&fit=crop&q=80&w=400' },
-
-  // Mini Mart Items (Provisions)
-  { id: 10, category: 'Mini Mart', name: 'Don Simon Juice (1L)', price: 'GHS 28.00', image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400' },
-  { id: 11, category: 'Mini Mart', name: 'Kelloggs Corn Flakes', price: 'GHS 45.00', image: 'https://images.unsplash.com/photo-1580052614034-c55d20bfee8b?auto=format&fit=crop&q=80&w=400' },
-  { id: 12, category: 'Mini Mart', name: 'Peak Milk (Tin)', price: 'GHS 12.00', image: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&q=80&w=400' },
-  { id: 13, category: 'Mini Mart', name: 'Digestive Biscuits', price: 'GHS 18.00', image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=400' },
-
-  // Mom & Baby
-  { id: 20, category: 'Mom & Baby', name: 'Pampers (Size 3)', price: 'GHS 110.00', image: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=400' },
-  { id: 21, category: 'Mom & Baby', name: 'Baby Wipes', price: 'GHS 25.00', image: 'https://images.unsplash.com/photo-1542845831-26f5d16790a1?auto=format&fit=crop&q=80&w=400' },
-];
+import { Search, MessageCircle, Camera, Package } from 'lucide-react';
 
 const CataloguePage = () => {
   const [activeTab, setActiveTab] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
+  
+  // --- NEW: State for Real Data ---
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Filter Logic
-  const filteredProducts = allProducts.filter(product => {
+  // --- 1. Fetch from Supabase ---
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = async () => {
+    setLoading(true);
+    // Fetch all products from the database
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching catalogue:', error);
+    } else {
+      setProducts(data || []);
+    }
+    setLoading(false);
+  };
+
+  // --- 2. Filter Logic (Same as before but uses state) ---
+  const filteredProducts = products.filter(product => {
     const matchesTab = activeTab === 'All' || product.category === activeTab;
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesTab && matchesSearch;
@@ -48,7 +55,6 @@ const CataloguePage = () => {
     <div className="page-wrapper">
       <Navbar />
 
-      {/* --- Page Header --- */}
       <div className="catalogue-header">
         <div className="cat-header-content">
           <span className="page-subtitle">Shop Online</span>
@@ -57,13 +63,11 @@ const CataloguePage = () => {
         </div>
       </div>
 
-      {/* --- Controls Section (Tabs & Search) --- */}
       <div className="catalogue-controls">
         <div className="controls-container">
           
-          {/* Tabs */}
           <div className="cat-tabs">
-            {['All', 'Pharmacy', 'Mini Mart', 'Mom & Baby'].map(tab => (
+            {['All', 'Pharmacy', 'Mini Mart', 'Mom & Baby', 'First Aid'].map(tab => (
               <button 
                 key={tab} 
                 className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
@@ -74,7 +78,6 @@ const CataloguePage = () => {
             ))}
           </div>
 
-          {/* Search Bar */}
           <div className="cat-search">
             <Search className="search-icon" size={20} />
             <input 
@@ -88,19 +91,35 @@ const CataloguePage = () => {
         </div>
       </div>
 
-      {/* --- Product Grid --- */}
       <div className="catalogue-grid-section">
         <div className="grid-container">
-          {filteredProducts.length > 0 ? (
+          
+          {/* Loading State */}
+          {loading && (
+            <div className="no-results" style={{ gridColumn: '1/-1', textAlign: 'center' }}>
+              <p>Loading products from database...</p>
+            </div>
+          )}
+
+          {/* Real Data Grid */}
+          {!loading && filteredProducts.length > 0 ? (
             filteredProducts.map(product => (
               <div key={product.id} className="cat-card">
                 <div className="cat-image">
-                  <img src={product.image} alt={product.name} />
+                  {/* Handle products without images safely */}
+                  {product.image_url ? (
+                    <img src={product.image_url} alt={product.name} />
+                  ) : (
+                    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f1f5f9', color: '#94a3b8' }}>
+                      <Package size={40} />
+                    </div>
+                  )}
                   <div className="cat-category-badge">{product.category}</div>
                 </div>
                 <div className="cat-details">
                   <h3>{product.name}</h3>
-                  <div className="cat-price">{product.price}</div>
+                  {/* Updated Price Display */}
+                  <div className="cat-price">GH₵ {product.price}</div>
                   <button onClick={() => handleOrder(product.name)} className="btn-cat-order">
                     <MessageCircle size={18} /> Order
                   </button>
@@ -108,14 +127,15 @@ const CataloguePage = () => {
               </div>
             ))
           ) : (
-            <div className="no-results">
-              <p>No products found. Try a different search or specific category.</p>
-            </div>
+            !loading && (
+              <div className="no-results">
+                <p>No products found in this category.</p>
+              </div>
+            )
           )}
         </div>
       </div>
 
-      {/* --- "Did We Miss Something?" Banner --- */}
       <div className="missing-item-banner">
         <div className="missing-content">
           <div className="missing-text">

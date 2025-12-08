@@ -1,39 +1,36 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import hook
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../supabaseClient'; // Import Supabase
 import '../styles/FeaturedProducts.css';
-import { MessageCircle, ShoppingBag, ArrowRight, ShoppingCart } from 'lucide-react';
+import { MessageCircle, ShoppingBag, ArrowRight, ShoppingCart, Package } from 'lucide-react';
 import miniMartImg from '../assets/interior.jpg';
 
-const products = [
-  {
-    id: 1,
-    name: "Malaria & Fever Relief",
-    description: "Coartem, Paracetamol, and rapid testing kits.",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: 2,
-    name: "Baby Care Essentials",
-    description: "Diapers, wipes, formula, and rash creams.",
-    image: "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: 3,
-    name: "Vitamins & Supplements",
-    description: "Immune boosters, Vitamin C, Zinc, and Multivitamins.",
-    image: "https://images.unsplash.com/photo-1550572017-edd951aa8f72?auto=format&fit=crop&q=80&w=400",
-  },
-  {
-    id: 4,
-    name: "First Aid & Antiseptics",
-    description: "Bandages, methylated spirit, and wound care.",
-    image: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&q=80&w=400",
-  }
-];
-
 const FeaturedProducts = () => {
-  const navigate = useNavigate(); // Initialize hook
+  const navigate = useNavigate();
   
+  // --- NEW: State for Real Data ---
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch only the latest 4 items for the homepage
+  useEffect(() => {
+    const fetchFeatured = async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(4); // Only get 4 items
+
+      if (error) console.error('Error fetching featured:', error);
+      else setProducts(data || []);
+      
+      setLoading(false);
+    };
+
+    fetchFeatured();
+  }, []);
+
   const handleOrder = (productName) => {
     const message = `Hello Success Key, I would like to inquire about: ${productName}`;
     const url = `https://wa.me/233240000000?text=${encodeURIComponent(message)}`;
@@ -44,7 +41,6 @@ const FeaturedProducts = () => {
     <section className="products-section" id="products">
       <div className="products-container">
         
-        {/* Section Header */}
         <div className="section-header">
           <span className="sub-title">Daily Essentials</span>
           <h2 className="main-title">Pharmacy & Mini Mart</h2>
@@ -53,7 +49,7 @@ const FeaturedProducts = () => {
           </p>
         </div>
 
-        {/* Mini Mart Intro Section */}
+        {/* Mini Mart Feature Block */}
         <div className="mini-mart-feature">
           <div className="mini-mart-content">
             <div className="mart-icon-badge">
@@ -72,44 +68,58 @@ const FeaturedProducts = () => {
               <span className="mart-tag">Snacks</span>
             </div>
           </div>
-          
           <div className="mini-mart-image">
             <img src={miniMartImg} alt="Success Key Mini Mart Interior" />
           </div>
         </div>
 
-        {/* Products Grid */}
+        {/* --- Real Data Grid --- */}
         <div className="products-grid">
-          {products.map((product) => (
-            <div key={product.id} className="product-card">
-              <div className="image-wrapper">
-                <img src={product.image} alt={product.name} />
-                <div className="overlay">
-                  <ShoppingBag size={24} color="#fff" />
+          {loading ? (
+             <div style={{ gridColumn: '1/-1', textAlign: 'center', color: '#64748b' }}>
+               Loading latest arrivals...
+             </div>
+          ) : (
+            products.map((product) => (
+              <div key={product.id} className="product-card">
+                <div className="image-wrapper">
+                  {product.image_url ? (
+                    <img src={product.image_url} alt={product.name} />
+                  ) : (
+                    <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8fafc', color: '#cbd5e1' }}>
+                      <Package size={40} />
+                    </div>
+                  )}
+                  <div className="overlay">
+                    <ShoppingBag size={24} color="#fff" />
+                  </div>
+                </div>
+                
+                <div className="card-content">
+                  <h3>{product.name}</h3>
+                  {/* Added Price Display with Cedi Symbol */}
+                  <p style={{ color: '#15803d', fontWeight: '800', margin: '0.25rem 0' }}>
+                    GH₵ {product.price}
+                  </p>
+                  <p>{product.description || product.category}</p>
+                  
+                  <button 
+                    className="btn-order"
+                    onClick={() => handleOrder(product.name)}
+                  >
+                    <MessageCircle size={18} />
+                    <span>Order on WhatsApp</span>
+                  </button>
                 </div>
               </div>
-              
-              <div className="card-content">
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                
-                <button 
-                  className="btn-order"
-                  onClick={() => handleOrder(product.name)}
-                >
-                  <MessageCircle size={18} />
-                  <span>Order on WhatsApp</span>
-                </button>
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
-        {/* Bottom CTA */}
         <div className="view-all-container">
           <button 
             className="btn-view-all"
-            onClick={() => navigate('/catalogue')} // Button now works!
+            onClick={() => navigate('/catalogue')}
           >
             See Full Catalogue <ArrowRight size={18} />
           </button>
