@@ -1,11 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import hook
 import '../styles/FeaturedProducts.css';
 import { MessageCircle, ShoppingBag, ArrowRight, ShoppingCart } from 'lucide-react';
+import miniMartImg from '../assets/interior.jpg';
 
-// Import local image for Mini Mart section
-import miniMartImg from '../assets/mart.jpg';
-
-// Mock Data
 const products = [
   {
     id: 1,
@@ -23,7 +21,7 @@ const products = [
     id: 3,
     name: "Vitamins & Supplements",
     description: "Immune boosters, Vitamin C, Zinc, and Multivitamins.",
-    image: "https://cloudfront-us-east-1.images.arcpublishing.com/gray/RZSXDB4LLZO7TF3DOIZL3UPIQM.jpg",
+    image: "https://images.unsplash.com/photo-1550572017-edd951aa8f72?auto=format&fit=crop&q=80&w=400",
   },
   {
     id: 4,
@@ -34,6 +32,7 @@ const products = [
 ];
 
 const FeaturedProducts = () => {
+  const navigate = useNavigate(); // Initialize hook
   
   const handleOrder = (productName) => {
     const message = `Hello Success Key, I would like to inquire about: ${productName}`;
@@ -54,7 +53,7 @@ const FeaturedProducts = () => {
           </p>
         </div>
 
-        {/* --- NEW: Mini Mart Intro Section --- */}
+        {/* Mini Mart Intro Section */}
         <div className="mini-mart-feature">
           <div className="mini-mart-content">
             <div className="mart-icon-badge">
@@ -78,7 +77,6 @@ const FeaturedProducts = () => {
             <img src={miniMartImg} alt="Success Key Mini Mart Interior" />
           </div>
         </div>
-        {/* ------------------------------------ */}
 
         {/* Products Grid */}
         <div className="products-grid">
@@ -109,7 +107,10 @@ const FeaturedProducts = () => {
 
         {/* Bottom CTA */}
         <div className="view-all-container">
-          <button className="btn-view-all">
+          <button 
+            className="btn-view-all"
+            onClick={() => navigate('/catalogue')} // Button now works!
+          >
             See Full Catalogue <ArrowRight size={18} />
           </button>
         </div>

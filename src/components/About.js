@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/About.css';
 import { Users, Clock, MapPin } from 'lucide-react';
-// Replace with a real image of your team or shop interior later
 import teamImg from '../assets/interior.jpg'; 
 
-const About = () => {
+const About = ({ showButton = true }) => { // Accepted new prop with default value
+  const navigate = useNavigate();
+
   return (
     <section className="about-section" id="about">
       <div className="about-container">
@@ -13,14 +15,13 @@ const About = () => {
         <div className="about-image-wrapper">
           <img src={teamImg} alt="Success Key Pharmacy Team" className="main-about-img" />
           
-          {/* Floating Card for Opening Hours */}
           <div className="hours-card">
             <div className="hours-icon">
               <Clock size={20} />
             </div>
             <div>
-              <h4>Open Mon - Sun</h4>
-              <p>6:00 AM - 11:30 PM</p>
+              <h4>Open Mon - Sat</h4>
+              <p>8:00 AM - 9:30 PM</p>
             </div>
           </div>
         </div>
@@ -38,7 +39,6 @@ const About = () => {
             Beyond just medicines, we stock a wide range of household essentials, baby products, and toiletries, making us your convenient one-stop shop.
           </p>
 
-          {/* Features List */}
           <div className="about-features">
             <div className="feature-item">
               <Users className="feature-icon" size={24} />
@@ -56,9 +56,15 @@ const About = () => {
             </div>
           </div>
 
-          <button className="btn-learn-more">
-            More About Us
-          </button>
+          {/* Conditional Rendering: Only show button if showButton is true */}
+          {showButton && (
+            <button 
+              className="btn-learn-more"
+              onClick={() => navigate('/about')}
+            >
+              More About Us
+            </button>
+          )}
         </div>
 
       </div>

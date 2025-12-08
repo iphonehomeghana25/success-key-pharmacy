@@ -1,0 +1,24 @@
+/* --- Variables --- */
+:root {
+  --neon-green: #1fc70f;
+  --slate-900: #0f172a;
+}
+
+/* --- Page Header Customization --- */
+.services-header-bg {
+  /* Dark teal/blue gradient for a "medical" feel */
+  background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(13, 148, 136, 0.8)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1920');
+  background-size: cover;
+  background-position: center;
+}
+
+.section-spacer {
+  margin-bottom: 2rem;
+}
+
+/* Adjustments to components when inside a page view */
+.page-content .services-section, 
+.page-content .screening-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}

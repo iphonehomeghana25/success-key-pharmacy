@@ -1,13 +1,15 @@
 import React from 'react';
-import '../styles/Hero.css'; // Correct path to styles folder
+import { useNavigate } from 'react-router-dom'; // Import hook
+import '../styles/Hero.css';
 import { MessageCircle, MapPin, CheckCircle, Star } from 'lucide-react';
 
-// Importing assets (Ensure these match your actual file names in the assets folder)
 import shopFrontImg from '../assets/shop_front.jpg';
 import interiorImg from '../assets/interior.jpg';
 import tabletsImg from '../assets/tablets.jpg';
 
 const Hero = () => {
+  const navigate = useNavigate(); // Initialize hook
+
   return (
     <section className="hero-section">
       <div className="hero-container">
@@ -32,7 +34,10 @@ const Hero = () => {
             <button className="btn-whatsapp">
               <MessageCircle size={20} /> Chat on WhatsApp
             </button>
-            <button className="btn-locate">
+            <button 
+              className="btn-locate"
+              onClick={() => navigate('/contact')} // Hook button to Contact Page
+            >
               <MapPin size={20} /> Locate Shop
             </button>
           </div>
@@ -42,19 +47,19 @@ const Hero = () => {
         <div className="hero-visuals">
           <div className="triangle-grid">
              
-             {/* Top Left: Shop Front (Large) */}
+             {/* Top Left: Shop Front */}
              <div className="hero-card card-shop">
                 <img src={shopFrontImg} alt="Success Key Shop Front" />
                 <div className="card-label">Shop Front</div>
              </div>
 
-             {/* Top Right: Interior (Large) */}
+             {/* Top Right: Interior */}
              <div className="hero-card card-interior">
                 <img src={interiorImg} alt="Interior Shelves" />
-                <div className="card-label label-dark">Professional Pharmacists</div>
+                <div className="card-label label-dark">Well Stocked</div>
              </div>
 
-             {/* Bottom Center: Tablets (smaller/anchor) */}
+             {/* Bottom Center: Tablets */}
              <div className="hero-card card-tablets">
                 <img src={tabletsImg} alt="Quality Medicines" />
                  <div className="card-label">Quality Meds</div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 import '../styles/Footer.css';
 import { ShieldCheck, Facebook, Instagram, Twitter, MessageCircle } from 'lucide-react';
 
@@ -18,7 +19,9 @@ const Footer = () => {
           </p>
           <div className="social-links">
             <a href="#" className="social-icon"><Facebook size={20} /></a>
-            <a href="#" className="social-icon"><Instagram size={20} /></a>
+            <a href="https://www.instagram.com/successkey_pharmacy_limited/" target="_blank" rel="noreferrer" className="social-icon">
+              <Instagram size={20} />
+            </a>
             <a href="#" className="social-icon"><Twitter size={20} /></a>
             <a href="https://wa.me/233240000000" className="social-icon"><MessageCircle size={20} /></a>
           </div>
@@ -28,11 +31,12 @@ const Footer = () => {
         <div className="footer-col">
           <h3>Quick Links</h3>
           <ul className="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#">Upload Prescription</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/about">About Us</Link></li>
+            <li><Link to="/blog">Blog</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/staff-portal">Staff Portal</Link></li> {/* Added Link */}
           </ul>
         </div>
 
@@ -40,11 +44,11 @@ const Footer = () => {
         <div className="footer-col">
           <h3>Our Services</h3>
           <ul className="footer-links">
-            <li><a href="#">Prescription Refills</a></li>
-            <li><a href="#">Over-the-Counter Meds</a></li>
-            <li><a href="#">Baby Care</a></li>
-            <li><a href="#">Vitamins & Supplements</a></li>
-            <li><a href="#">Pharmacist Consultations</a></li>
+            <li><Link to="/catalogue">Prescription Refills</Link></li>
+            <li><Link to="/catalogue">Over-the-Counter Meds</Link></li>
+            <li><Link to="/catalogue">Baby Care</Link></li>
+            <li><Link to="/catalogue">Vitamins & Supplements</Link></li>
+            <li><Link to="/services">Pharmacist Consultations</Link></li>
           </ul>
         </div>
 
@@ -65,8 +69,8 @@ const Footer = () => {
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Success Key Pharmacy & Mini Mart. All rights reserved.</p>
         <div className="footer-bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <Link to="/privacy">Privacy Policy</Link>
+          <Link to="/terms">Terms of Service</Link>
         </div>
       </div>
     </footer>
