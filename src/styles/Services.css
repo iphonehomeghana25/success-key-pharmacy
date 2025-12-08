@@ -105,6 +105,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  /* Removed margin-bottom so the button sits right below */
 }
 
 .banner-content h3 {
@@ -172,4 +173,33 @@
     background-color: rgba(255,255,255,0.2);
     margin-top: -30px; /* Align with center of icons */
   }
+}
+
+/* --- NEW Button Container and Styling --- */
+.services-action-area {
+  margin-top: 2rem; /* Spacing between banner and button */
+  display: flex;
+  justify-content: center;
+}
+
+.btn-services-upload {
+  background-color: var(--neon-green); /* Green Background */
+  color: white; /* White Text */
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 20px -5px rgba(31, 199, 15, 0.4);
+}
+
+.btn-services-upload:hover {
+  background-color: var(--dark-green);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px -5px rgba(31, 199, 15, 0.5);
 }

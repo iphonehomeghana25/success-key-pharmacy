@@ -19,8 +19,8 @@ const About = () => {
               <Clock size={20} />
             </div>
             <div>
-              <h4>Open Mon - Sat</h4>
-              <p>8:00 AM - 9:30 PM</p>
+              <h4>Open Mon - Sun</h4>
+              <p>6:00 AM - 11:30 PM</p>
             </div>
           </div>
         </div>

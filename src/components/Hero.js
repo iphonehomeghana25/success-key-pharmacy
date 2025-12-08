@@ -51,7 +51,7 @@ const Hero = () => {
              {/* Top Right: Interior (Large) */}
              <div className="hero-card card-interior">
                 <img src={interiorImg} alt="Interior Shelves" />
-                <div className="card-label label-dark">Well Stocked</div>
+                <div className="card-label label-dark">Professional Pharmacists</div>
              </div>
 
              {/* Bottom Center: Tablets (smaller/anchor) */}

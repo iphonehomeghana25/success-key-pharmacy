@@ -1,8 +1,15 @@
 import React from 'react';
 import '../styles/Services.css';
-import { Truck, ShieldCheck, Stethoscope, Camera, Send, PackageCheck } from 'lucide-react';
+import { Truck, ShieldCheck, Stethoscope, Camera, Send, PackageCheck, Upload } from 'lucide-react';
 
 const Services = () => {
+  
+  // Function to handle WhatsApp click
+  const handleUploadClick = () => {
+    const message = "Hello Success Key, I want to upload a prescription.";
+    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <section className="services-section" id="services">
       <div className="services-container">
@@ -40,6 +47,7 @@ const Services = () => {
         </div>
 
         {/* --- PART 2: How Prescription Upload Works --- */}
+        {/* The Dark Banner "Cart" */}
         <div className="how-it-works-banner">
           <div className="banner-content">
             <h3>Prescription Refills Made Simple</h3>
@@ -62,6 +70,13 @@ const Services = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Button is now OUTSIDE the banner */}
+        <div className="services-action-area">
+          <button onClick={handleUploadClick} className="btn-services-upload">
+            <Upload size={20} /> Upload Prescription Now
+          </button>
         </div>
 
       </div>
