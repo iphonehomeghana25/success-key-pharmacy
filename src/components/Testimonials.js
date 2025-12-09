@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../supabaseClient'; // Import Supabase
 import '../styles/Testimonials.css';
 import { Star, Quote } from 'lucide-react';
 
-const reviews = [
-  {
-    id: 1,
-    name: "Mrs. Mensah",
-    location: "Abeka",
-    text: "Success Key is a lifesaver. I uploaded my prescription on WhatsApp and they delivered it within 30 minutes. Very professional staff!",
-    stars: 5,
-  },
-  {
-    id: 2,
-    name: "Kweku Boateng",
-    location: "Lapaz",
-    text: "I love their mini mart section. I can buy my vitamins and pick up diapers for the baby at the same time. Good prices too.",
-    stars: 5,
-  },
-  {
-    id: 3,
-    name: "Sarah Osei",
-    location: "Tesano",
-    text: "The pharmacist took time to explain how to take my medication properly. You don't get that kind of attention everywhere.",
-    stars: 5,
-  },
-];
-
 const Testimonials = () => {
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch reviews from DB
+  useEffect(() => {
+    const fetchReviews = async () => {
+      const { data, error } = await supabase
+        .from('reviews')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(3); // Only show top 3 on homepage
+
+      if (!error && data) {
+        setReviews(data);
+      }
+      setLoading(false);
+    };
+
+    fetchReviews();
+  }, []);
+
+  // Use DB reviews if available, otherwise hide section or show message
+  if (!loading && reviews.length === 0) return null; // Hide if empty
+
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">
@@ -51,7 +52,7 @@ const Testimonials = () => {
                   <span>{review.location}</span>
                 </div>
                 <div className="stars">
-                  {[...Array(review.stars)].map((_, i) => (
+                  {[...Array(review.rating)].map((_, i) => (
                     <Star key={i} size={16} fill="currentColor" />
                   ))}
                 </div>

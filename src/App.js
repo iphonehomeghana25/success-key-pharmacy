@@ -32,6 +32,9 @@ import AdminLayout from './layouts/AdminLayout';
 import DashboardOverview from './pages/admin/DashboardOverview';
 import ProductManagement from './pages/admin/ProductManagement';
 import BlogManagement from './pages/admin/BlogManagement';
+import ReviewsManagement from './pages/admin/ReviewsManagement';
+import OrdersManagement from './pages/admin/OrdersManagement';
+import SalesAnalytics from './pages/admin/SalesAnalytics'; // Import Sales Page
 
 // Home Page Component
 const Home = () => {
@@ -63,7 +66,6 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          {/* New Dynamic Route for Single Blog Posts */}
           <Route path="/blog/:id" element={<BlogPostPage />} /> 
           
           <Route path="/privacy" element={<PrivacyPage />} />
@@ -78,9 +80,10 @@ function App() {
             <Route path="dashboard" element={<DashboardOverview />} />
             <Route path="products" element={<ProductManagement />} />
             <Route path="blog" element={<BlogManagement />} />
-            <Route path="orders" element={<div>Orders Page Coming Soon</div>} />
-            <Route path="sales" element={<div>Sales Page Coming Soon</div>} />
-            <Route path="reviews" element={<div>Reviews Page Coming Soon</div>} />
+            <Route path="reviews" element={<ReviewsManagement />} />
+            <Route path="orders" element={<OrdersManagement />} />
+            {/* Sales Route Added Here */}
+            <Route path="sales" element={<SalesAnalytics />} /> 
           </Route>
 
           {/* 404 Route */}

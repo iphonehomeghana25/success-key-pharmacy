@@ -1,0 +1,148 @@
+.analytics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.analytics-header h2 { margin: 0; color: var(--slate-900); }
+
+.date-filter-badge {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Metrics Cards */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.metric-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.metric-icon {
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.metric-card.green .metric-icon { background-color: #dcfce7; color: #15803d; }
+.metric-card.blue .metric-icon { background-color: #dbeafe; color: #1e40af; }
+.metric-card.purple .metric-icon { background-color: #f3e8ff; color: #7e22ce; }
+
+.metric-card p { margin: 0; color: #64748b; font-size: 0.9rem; }
+.metric-card h3 { margin: 0; font-size: 1.5rem; color: var(--slate-900); }
+
+/* Content Row */
+.analytics-content-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .analytics-content-row {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.analytics-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.analytics-card h3 {
+  margin-top: 0;
+  color: var(--slate-900);
+  font-size: 1.1rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Payment Breakdown */
+.payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.pay-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--slate-900);
+}
+
+.pay-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pay-icon.momo { background-color: #ffedd5; color: #c2410c; }
+.pay-icon.cash { background-color: #dcfce7; color: #15803d; }
+
+.pay-count { color: #64748b; font-size: 0.9rem; }
+
+.progress-bar {
+  height: 8px;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill { height: 100%; border-radius: 4px; }
+.momo-fill { background-color: #f97316; }
+.cash-fill { background-color: #22c55e; }
+
+.mt-4 { margin-top: 1.5rem; }
+
+/* Transaction List */
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.transaction-row:last-child { border-bottom: none; }
+
+.trans-name { font-weight: 600; color: var(--slate-900); }
+.trans-date { font-size: 0.8rem; color: #94a3b8; }
+.trans-amount { color: #15803d; font-weight: 700; }
+.text-muted { color: #94a3b8; font-style: italic; }
