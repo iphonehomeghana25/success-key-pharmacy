@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../supabaseClient'; // Import Supabase
+import { Link } from 'react-router-dom'; // Import Link
+import { supabase } from '../supabaseClient'; 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/BlogPage.css';
@@ -33,7 +34,7 @@ const BlogPage = () => {
     <div className="page-wrapper">
       <Navbar />
       
-      {/* --- Page Header --- */}
+      {/* Page Header */}
       <div className="page-header blog-header-bg">
         <div className="header-content">
           <span className="page-subtitle">Health Tips & News</span>
@@ -42,26 +43,23 @@ const BlogPage = () => {
         </div>
       </div>
 
-      {/* --- Blog Grid --- */}
+      {/* Blog Grid */}
       <div className="page-content">
         <section className="blog-section">
           <div className="blog-container">
             
-            {/* Loading State */}
             {loading && (
               <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: '#64748b' }}>
                 Loading articles...
               </div>
             )}
 
-            {/* Empty State */}
             {!loading && posts.length === 0 && (
               <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '3rem', color: '#64748b' }}>
                 <p>No articles published yet. Check back soon!</p>
               </div>
             )}
 
-            {/* Real Data Rendering */}
             {!loading && posts.map((post) => (
               <article key={post.id} className="blog-card">
                 <div className="blog-image">
@@ -90,11 +88,10 @@ const BlogPage = () => {
                   <h3>{post.title}</h3>
                   <p>{post.excerpt}</p>
                   
-                  {/* For now, this button just reloads/does nothing since we don't have single post pages yet. 
-                      You can add a link to a full post page later if needed. */}
-                  <button className="btn-read-more">
+                  {/* UPDATE: Replaced <button> with <Link> */}
+                  <Link to={`/blog/${post.id}`} className="btn-read-more">
                     Read Article <ArrowRight size={16} />
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}

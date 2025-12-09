@@ -24,6 +24,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage'; // Import the new Single Post Page
 import StaffPortalPage from './pages/StaffPortalPage';
 
 // Import Admin System
@@ -62,19 +63,21 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          {/* New Dynamic Route for Single Blog Posts */}
+          <Route path="/blog/:id" element={<BlogPostPage />} /> 
+          
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           
           {/* Staff Login */}
           <Route path="/staff-portal" element={<StaffPortalPage />} />
 
-          {/* --- ADMIN ROUTES (Protected by Layout) --- */}
+          {/* --- ADMIN ROUTES --- */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Navigate to="dashboard" replace />} />
             <Route path="dashboard" element={<DashboardOverview />} />
             <Route path="products" element={<ProductManagement />} />
             <Route path="blog" element={<BlogManagement />} />
-            {/* Placeholder routes for now */}
             <Route path="orders" element={<div>Orders Page Coming Soon</div>} />
             <Route path="sales" element={<div>Sales Page Coming Soon</div>} />
             <Route path="reviews" element={<div>Reviews Page Coming Soon</div>} />
