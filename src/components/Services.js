@@ -7,7 +7,7 @@ const Services = () => {
   // Function to handle WhatsApp click
   const handleUploadClick = () => {
     const message = "Hello Success Key, I want to upload a prescription.";
-    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/233246466416?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (

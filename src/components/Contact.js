@@ -43,8 +43,8 @@ const Contact = () => {
               <div>
                 <h4>Call Us</h4>
                 <p>
-                  <a href="tel:+233240000000">024 000 0000</a> <br/>
-                  <a href="tel:+233200000000">020 000 0000</a>
+                  <a href="tel:+233246466416">0246466416</a> <br/>
+                  <a href="tel:+233302253192">0302253192</a>
                 </p>
               </div>
             </div>
@@ -55,7 +55,7 @@ const Contact = () => {
               </div>
               <div>
                 <h4>Opening Hours</h4>
-                <p>Mon - Sat: 8:00 AM - 9:30 PM<br/>Sun: 12:00 PM - 6:00 PM</p>
+                <p>Mon - Sat: 6:00 AM - 11:30 PM<br/>Sun: 9:00 AM - 11:30 PM</p>
               </div>
             </div>
 

@@ -9,7 +9,7 @@ const faqData = [
   },
   {
     question: "Do you deliver to areas outside Lapaz?",
-    answer: "Our primary rapid delivery zone is Abeka, Lapaz, and Tesano. However, we can dispatch riders to Achimota, Dome, and Kaneshie for a slightly higher delivery fee."
+    answer: "Our primary rapid delivery zone is Abeka, Lapaz, and Tesano. However, we can dispatch riders to Achimota, Dome, Kaneshie and Accra for a slightly higher delivery fee."
   },
   {
     question: "How do I upload my prescription?",
@@ -17,7 +17,7 @@ const faqData = [
   },
   {
     question: "Are you open on Sundays?",
-    answer: "Yes, we are open on Sundays from 12:00 PM to 6:00 PM to handle emergencies and weekend refills."
+    answer: "Yes, we are open on Sundays from 9:00 AM to 11:300 PM to handle emergencies and weekend refills."
   },
   {
     question: "Do you sell baby formula and diapers?",

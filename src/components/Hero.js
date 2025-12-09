@@ -13,7 +13,7 @@ const Hero = () => {
   // Function to handle WhatsApp click
   const handleWhatsAppClick = () => {
     const message = "Hello Success Key, I would like to make an inquiry.";
-    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/233246466416?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -33,7 +33,7 @@ const Hero = () => {
           </h1>
           
           <p className="hero-description">
-            Visit <strong>Success Key Pharmacy</strong> for trusted healthcare. We are stocked with quality medications and our pharmacists are ready to listen.
+            Visit <strong>Success Key Pharmacy</strong> for trusted healthcare. We are stocked with quality medications and our pharmacists are ready to listen."YOUR HEALTH IS OUR ULTIMATE CONCERN"
           </p>
           
           <div className="hero-buttons">
@@ -65,7 +65,7 @@ const Hero = () => {
              {/* Top Right: Interior */}
              <div className="hero-card card-interior">
                 <img src={interiorImg} alt="Interior Shelves" />
-                <div className="card-label label-dark">Well Stocked</div>
+                <div className="card-label label-dark">Expert Pharmacist</div>
              </div>
 
              {/* Bottom Center: Tablets */}

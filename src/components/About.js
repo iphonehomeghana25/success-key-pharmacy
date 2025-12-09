@@ -21,7 +21,7 @@ const About = ({ showButton = true }) => { // Accepted new prop with default val
             </div>
             <div>
               <h4>Open Mon - Sat</h4>
-              <p>8:00 AM - 9:30 PM</p>
+              <p>6:00 AM - 11:30 PM</p>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient'; // Import Supabase
 import '../styles/FeaturedProducts.css';
 import { MessageCircle, ShoppingBag, ArrowRight, ShoppingCart, Package } from 'lucide-react';
-import miniMartImg from '../assets/interior.jpg';
+import miniMartImg from '../assets/mart.jpg';
 
 const FeaturedProducts = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const FeaturedProducts = () => {
 
   const handleOrder = (productName) => {
     const message = `Hello Success Key, I would like to inquire about: ${productName}`;
-    const url = `https://wa.me/233240000000?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/233246466416?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
 

@@ -43,12 +43,12 @@ const CataloguePage = () => {
 
   const handleOrder = (productName) => {
     const message = `Hello, I saw ${productName} in your catalogue and would like to buy it.`;
-    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/233246466416?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   const handleCustomOrder = () => {
     const message = "Hello, I am looking for a product that is not listed in your catalogue.";
-    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://wa.me/233246466416?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
