@@ -10,6 +10,13 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
+  // Function to handle Upload Prescription click (WhatsApp)
+  const handleUploadClick = () => {
+    const message = "Hello Success Key, I want to upload a prescription.";
+    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+    setIsOpen(false); // Close mobile menu if open
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -30,13 +37,16 @@ const Navbar = () => {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/about" className="nav-link">About Us</Link>
           <Link to="/services" className="nav-link">Services</Link>
-          <Link to="/blog" className="nav-link">Blog</Link> {/* Added Blog Link */}
+          <Link to="/blog" className="nav-link">Blog</Link>
           <Link to="/contact" className="nav-link">Contact</Link>
         </div>
 
         {/* Desktop Upload Button */}
         <div className="nav-action desktop-only">
-          <button className="btn-upload">
+          <button 
+            className="btn-upload" 
+            onClick={handleUploadClick} // Hooked to WhatsApp
+          >
             <Upload size={18} /> Upload Prescription
           </button>
         </div>
@@ -53,9 +63,12 @@ const Navbar = () => {
           <Link to="/" className="mobile-link" onClick={handleLinkClick}>Home</Link>
           <Link to="/about" className="mobile-link" onClick={handleLinkClick}>About Us</Link>
           <Link to="/services" className="mobile-link" onClick={handleLinkClick}>Services</Link>
-          <Link to="/blog" className="mobile-link" onClick={handleLinkClick}>Blog</Link> {/* Added Blog Link */}
+          <Link to="/blog" className="mobile-link" onClick={handleLinkClick}>Blog</Link>
           <Link to="/contact" className="mobile-link" onClick={handleLinkClick}>Contact</Link>
-          <button className="btn-upload mobile-btn" onClick={handleLinkClick}>
+          <button 
+            className="btn-upload mobile-btn" 
+            onClick={handleUploadClick} // Hooked to WhatsApp & closes menu
+          >
              <Upload size={18} /> Upload Prescription
           </button>
         </div>

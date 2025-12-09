@@ -99,3 +99,14 @@ body {
     font-size: 2rem;
   }
 }
+/* ... existing code ... */
+
+/* --- MOBILE INPUT ZOOM FIX --- */
+/* Prevents iOS from zooming in when clicking a text box */
+@media screen and (max-width: 768px) {
+  input, 
+  textarea, 
+  select {
+    font-size: 16px !important;
+  }
+}

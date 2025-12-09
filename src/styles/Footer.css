@@ -150,14 +150,21 @@
   cursor: pointer;
 }
 
+.spin { animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
 /* --- Footer Bottom --- */
 .footer-bottom {
   background-color: #020617; /* Even darker slate */
   padding: 1.5rem 1rem;
   border-top: 1px solid var(--slate-800);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-.footer-bottom {
+.footer-legal-row {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,14 +172,14 @@
   text-align: center;
   font-size: 0.85rem;
   color: var(--slate-400);
+  width: 100%;
+  max-width: 1280px;
 }
 
 @media (min-width: 768px) {
-  .footer-bottom {
+  .footer-legal-row {
     flex-direction: row;
     justify-content: space-between;
-    max-width: 1280px;
-    margin: 0 auto;
   }
 }
 
@@ -188,4 +195,16 @@
 
 .footer-bottom-links a:hover {
   color: white;
+}
+
+/* Developer Credit Styling */
+.developer-credit {
+  width: 100%;
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #111827;
+  font-size: 0.75rem;
+  color: #475569;
+  font-family: monospace; /* Gives it a subtle 'code' look */
+  letter-spacing: 0.05em;
 }
