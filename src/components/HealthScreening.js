@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import hook
 import '../styles/HealthScreening.css';
 import { Activity, HeartPulse, Droplet, Thermometer, ArrowRight } from 'lucide-react';
 
@@ -6,6 +7,8 @@ import { Activity, HeartPulse, Droplet, Thermometer, ArrowRight } from 'lucide-r
 import pharmacistImg from '../assets/Pharmacist1.jpg';
 
 const HealthScreening = () => {
+  const navigate = useNavigate(); // Initialize navigation
+
   return (
     <section className="screening-section">
       <div className="screening-container">
@@ -52,7 +55,10 @@ const HealthScreening = () => {
             </div>
           </div>
 
-          <button className="btn-book-test">
+          <button 
+            className="btn-book-test"
+            onClick={() => navigate('/contact')} // Now points to the Location/Map page
+          >
             Visit for a Check-up <ArrowRight size={18} />
           </button>
         </div>

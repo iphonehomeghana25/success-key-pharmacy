@@ -1,8 +1,17 @@
 import React from 'react';
 import '../styles/Contact.css';
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { MapPin, Phone, Clock, Send } from 'lucide-react';
 
 const Contact = () => {
+  
+  // Function to open Google Maps
+  const handleGetDirections = () => {
+    // We use the coordinates from your map embed (Abeka-Lapaz area)
+    // format: destination=Latitude,Longitude
+    const googleMapsUrl = "https://www.google.com/maps/dir/?api=1&destination=5.587392,-0.236979";
+    window.open(googleMapsUrl, '_blank');
+  };
+
   return (
     <section className="contact-section" id="contact">
       <div className="contact-container">
@@ -34,8 +43,8 @@ const Contact = () => {
               <div>
                 <h4>Call Us</h4>
                 <p>
-                  <a href="tel:+233246466416">0246466416</a> <br/>
-                  <a href="tel:+233302253192">0302253192</a>
+                  <a href="tel:+233240000000">024 000 0000</a> <br/>
+                  <a href="tel:+233200000000">020 000 0000</a>
                 </p>
               </div>
             </div>
@@ -46,20 +55,23 @@ const Contact = () => {
               </div>
               <div>
                 <h4>Opening Hours</h4>
-                <p>Mon - Sun: 6:00 AM - 11:30 PM<br/>Sun: 9:00 PM - 11:30 PM</p>
+                <p>Mon - Sat: 8:00 AM - 9:30 PM<br/>Sun: 12:00 PM - 6:00 PM</p>
               </div>
             </div>
 
           </div>
 
-          <button className="btn-get-directions">
+          <button 
+            className="btn-get-directions"
+            onClick={handleGetDirections} // Hooked up to Google Maps
+          >
             <Send size={18} /> Get Directions
           </button>
         </div>
 
         {/* --- Right Side: Map --- */}
         <div className="map-wrapper">
-          {/* Placeholder for Google Maps Embed */}
+          {/* Google Maps Embed */}
           <iframe 
             title="Success Key Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.8577583796847!2d-0.2369786852339396!3d5.587392395950854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9a1738c2049b%3A0x6b8014528147775!2sLapaz%2C%20Accra!5e0!3m2!1sen!2sgh!4v1682522648792!5m2!1sen!2sgh" 

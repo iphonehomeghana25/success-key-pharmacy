@@ -10,6 +10,12 @@ import tabletsImg from '../assets/tablets.jpg';
 const Hero = () => {
   const navigate = useNavigate(); // Initialize hook
 
+  // Function to handle WhatsApp click
+  const handleWhatsAppClick = () => {
+    const message = "Hello Success Key, I would like to make an inquiry.";
+    window.open(`https://wa.me/233240000000?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <section className="hero-section">
       <div className="hero-container">
@@ -31,8 +37,11 @@ const Hero = () => {
           </p>
           
           <div className="hero-buttons">
-            <button className="btn-whatsapp">
-              <MessageCircle size={20} /> Chat on WhatsApp
+            <button 
+              className="btn-whatsapp"
+              onClick={handleWhatsAppClick}
+            >
+              <MessageCircle size={20} /> Talk to us now on WhatsApp
             </button>
             <button 
               className="btn-locate"
